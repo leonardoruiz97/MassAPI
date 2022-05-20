@@ -14,20 +14,37 @@ namespace MassAPI.Controllers
         
         [HttpGet]
         [Route("api/Inventario/Reporte")]
-        public async Task<IActionResult> ReporteInventario()
-        {
-            //Inventario inventario = new Inventario
-            //{
-            //    Pk_articulo = parameters.Pk_articulo,
-            //    Pk_marca = parameters.Pk_marca
-            //};            
+        public async Task<IActionResult> ReporteInventario(Inventario objInv)
+        {  
 
             InventarioLogica InvLogic = new InventarioLogica();
-            var data = await InvLogic.ReporteInventario(new Inventario());
+            var data = await InvLogic.ReporteInventario(objInv);
 
 
             return Ok(data);
         }
+
+
+
+
+        [HttpGet]
+        [Route("api/Inventario/listarInventario")]
+        public async Task<IActionResult> listarInventario(Inventario.listarInventario objInv)
+        {
+            InventarioLogica InvLogic = new InventarioLogica();
+            var data = await InvLogic.listarInventario(objInv);
+            return Ok(data);
+        }
+
+        [HttpGet]
+        [Route("api/Inventario/detalleInventario")]
+        public async Task<IActionResult> detalleInventario(Inventario.detalleInventario objInv)
+        {
+            InventarioLogica InvLogic = new InventarioLogica();
+            var data = await InvLogic.detalleInventario(objInv);
+            return Ok(data);
+        }
+
         [HttpGet]
         [Route("api/Inventario/DdlMarca")]
         public async Task<IActionResult> DdlMarca()
@@ -37,6 +54,26 @@ namespace MassAPI.Controllers
 
             InventarioLogica InvLogic = new InventarioLogica();
             var data = await InvLogic.DdlMarca(new Inventario.ddlMarca());
+
+
+
+
+
+            return Ok(data);
+        }
+
+
+
+
+        [HttpGet]
+        [Route("api/Inventario/DdlUsuarioxInv")]
+        public async Task<IActionResult> DdlUsuarioxInv()
+        {
+
+
+
+            InventarioLogica InvLogic = new InventarioLogica();
+            var data = await InvLogic.DdlUsuarioxInv(new Inventario.ddlUsuarioXinv());
 
 
 

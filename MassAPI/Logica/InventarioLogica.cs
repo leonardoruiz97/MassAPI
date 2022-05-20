@@ -23,6 +23,31 @@ namespace MassAPI.Logica
             return oSection;
         }
 
+        public async Task<List<Inventario.detalleInventario>> detalleInventario(Inventario.detalleInventario objDetalle)
+        {
+            List<Inventario.detalleInventario> oSection = null;
+            using (SqlConnection cn = new SqlConnection(this.stringConexion))
+            {         
+                
+                await cn.OpenAsync();
+                InventarioDatos oSectionDatos = new InventarioDatos();
+                oSection = await oSectionDatos.detalleInventario(cn, objDetalle);
+            }
+            return oSection;
+        }
+
+        public async Task<List<Inventario.listarInventario>> listarInventario(Inventario.listarInventario Item)
+        {
+            List<Inventario.listarInventario> oSection = null;
+            using (SqlConnection cn = new SqlConnection(this.stringConexion))
+            {
+                await cn.OpenAsync();
+                InventarioDatos oSectionDatos = new InventarioDatos();
+                oSection = await oSectionDatos.listarInventario(cn, Item);
+            }
+            return oSection;
+        }
+
 
         public async Task<List<Inventario.ddlMarca>> DdlMarca(Inventario.ddlMarca Item)
         {
@@ -32,6 +57,18 @@ namespace MassAPI.Logica
                 await cn.OpenAsync();
                 InventarioDatos oSectionDatos = new InventarioDatos();
                 oSection = await oSectionDatos.DdlMarca(cn, Item);
+            }
+            return oSection;
+        }
+
+        public async Task<List<Inventario.ddlUsuarioXinv>> DdlUsuarioxInv(Inventario.ddlUsuarioXinv Item)
+        {
+            List<Inventario.ddlUsuarioXinv> oSection = null;
+            using (SqlConnection cn = new SqlConnection(this.stringConexion))
+            {
+                await cn.OpenAsync();
+                InventarioDatos oSectionDatos = new InventarioDatos();
+                oSection = await oSectionDatos.DdlUsuarioxInv(cn, Item);
             }
             return oSection;
         }
